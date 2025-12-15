@@ -1,12 +1,14 @@
 # Modern Tech Blog
 
-A modern, high-performance technical blog built with [TanStack Start](https://tanstack.com/start), [React](https://react.dev/), and [Tailwind CSS](https://tailwindcss.com/).
+A modern, high-performance technical blog built with [TanStack Start](https://tanstack.com/start), [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), and [Content Collections](https://www.content-collections.dev/).
 
 ## Features
 
 - **Modern Stack**: Built with the latest web technologies including Vite, React 19, and TanStack Router.
+- **MDX Support**: Write blog posts in MDX (Markdown + JSX) with full component support.
+- **Content Collections**: Type-safe content management for your blog posts.
+- **Syntax Highlighting**: Beautiful code blocks using `rehype-highlight` and Atom One Dark theme.
 - **File-Based Routing**: Intuitive routing structure using TanStack Router.
-- **Markdown Support**: Renders blog posts from Markdown with syntax highlighting using `react-markdown` and `highlight.js`.
 - **Responsive Design**: Fully responsive UI styled with Tailwind CSS.
 - **Type Safety**: End-to-end type safety with TypeScript.
 
@@ -50,16 +52,42 @@ pnpm dlx shadcn@latest add button
 ## Project Structure
 
 ```bash
-src/
-├── components/        # Reusable UI components (Header, Footer, Hero, etc.)
-├── data/             # Static data files (e.g., blog posts)
-├── lib/              # Utility functions
-├── routes/           # File-based routes for TanStack Router
-│   ├── blog/         # Blog routes (index and slug)
-│   ├── __root.tsx    # Root layout component
-│   └── index.tsx     # Homepage
-└── styles.css        # Global styles and Tailwind directives
+├── content/
+│   └── blogs/         # MDX blog posts go here
+├── src/
+│   ├── components/    # Reusable UI components (Header, Footer, Hero, etc.)
+│   ├── lib/           # Utility functions
+│   ├── routes/        # File-based routes for TanStack Router
+│   │   ├── blog/      # Blog routes (index and slug)
+│   │   ├── __root.tsx # Root layout component
+│   │   └── index.tsx  # Homepage
+│   └── styles.css     # Global styles and Tailwind directives
+├── content-collections.ts # Configuration for content collections
+├── vite.config.ts     # Vite configuration
+└── package.json
 ```
+
+## Adding a New Blog Post
+
+1. Create a new `.mdx` file in `content/blogs/`.
+2. Add the required frontmatter:
+
+```mdx
+---
+title: "My New Post"
+summary: "A short summary of the post."
+date: "2025-01-01"
+category: "Tech"
+tags: ["react", "tutorial"]
+content: "" # This is required by the schema but handled automatically
+---
+
+# Hello World
+
+Write your content here using Markdown or MDX!
+```
+
+The new post will automatically appear on the blog page.
 
 ## Routing
 
@@ -96,8 +124,9 @@ More information on the `Link` component can be found in the [Link documentation
 You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
 
 ---
+
 <div>
   <center>
-    <h1>Build by Pratham Darji</h1>
+    <h1>Built by Pratham Darji</h1>
   </center>
 </div>
