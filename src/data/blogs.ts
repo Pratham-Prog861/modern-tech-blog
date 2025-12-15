@@ -4,6 +4,8 @@ export type Blog = {
     description: string
     content: string
     date: string
+    tags: string[]
+    category: string
   }
   
   export const blogs: Blog[] = [
@@ -12,6 +14,8 @@ export type Blog = {
       title: "What is Artificial Intelligence?",
       description: "A beginner-friendly introduction to AI.",
       date: "2025-01-01",
+      category: "AI",
+      tags: ["ai", "basics", "technology"],
       content: `
   # What is AI?
   
@@ -30,6 +34,8 @@ export type Blog = {
       title: "Getting Started with TanStack Start",
       description: "Learn the basics of TanStack Start.",
       date: "2025-01-05",
+      category: "Web Development",
+      tags: ["react", "tanstack", "frontend", "web development"],
       content: `
   # TanStack Start
   

@@ -1,6 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { blogs } from "../../data/blogs"
 import { PageLoader } from '@/components/PageLoader'
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
+import { Badge } from "@/components/ui/badge"
 
 export const Route = createFileRoute('/blog/$slug')({
   loader: async ({ params }) => {
@@ -24,10 +27,23 @@ function BlogDetail() {
       <h1 className="text-4xl font-bold">{blog.title}</h1>
       <p className="text-sm text-muted-foreground">{blog.date}</p>
 
-      <div className="prose prose-zinc dark:prose-invert">
-        {blog.content.split("\n").map((line, i) => (
-          <p key={i}>{line}</p>
+      {/* Category */}
+      <Badge variant="secondary">{blog.category}</Badge>
+
+      {/* Tags */}
+      <div className="flex gap-2 flex-wrap">
+        {blog.tags.map((tag) => (
+          <Badge key={tag} variant="outline">
+            #{tag}
+          </Badge>
         ))}
+      </div>
+
+      {/* Markdown Content */}
+      <div className="prose prose-zinc dark:prose-invert max-w-none">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {blog.content}
+        </ReactMarkdown>
       </div>
     </article>
   )
