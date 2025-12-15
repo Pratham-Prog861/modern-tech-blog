@@ -9,6 +9,8 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@content-collections/core": "^0.12.0",
+    "@content-collections/vite": "^0.2.7",
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/react-slot": "^1.2.4",
     "@tailwindcss/vite": "^4.0.6",
@@ -35,6 +37,7 @@
     "zod": "^4.1.13"
   },
   "devDependencies": {
+    "@content-collections/mdx": "^0.2.2",
     "@tanstack/devtools-vite": "^0.3.11",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",

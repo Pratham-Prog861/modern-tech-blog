@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { blogs } from "../../data/blogs";
+import { allBlogs as blogs } from "content-collections";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageLoader } from "@/components/PageLoader";
 import { Badge } from "@/components/ui/badge";

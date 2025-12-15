@@ -1,0 +1,48 @@
+---
+title: "Getting Started with TanStack Start"
+summary: "An introduction to TanStack Start and why it matters for modern React apps."
+date: "2025-01-05"
+category: "Web Development"
+tags: ["react","tanstack","frontend","web development"]
+---
+# Getting Started with TanStack Start
+
+**TanStack Start** is a modern full-stack React framework focused on **server-first rendering**. It's built by the same team behind TanStack Query and Router.
+
+---
+
+## Why TanStack Start?
+Traditional React apps (SPAs) push too much logic to the client. TanStack Start brings logic back to the **server** where it belongs, improving performance and SEO.
+
+---
+
+## Core Features
+
+### 1. Server Functions
+You can write server-side code directly in your components.
+
+```tsx
+// Server-side action
+const greetUser = createServerFn('POST', async (name: string) => {
+  return `Hello, ${name}!`;
+});
+```
+
+### 2. File-Based Routing
+Just like Next.js, your file structure determines your routes.
+*   `routes/index.tsx` -> `/`
+*   `routes/about.tsx` -> `/about`
+
+### 3. Type-Safe Navigation
+No more broken links. TanStack Start knows all your routes.
+
+```tsx
+<Link to="/blog/$slug" params={{ slug: 'my-post' }}>
+  Read Post
+</Link>
+```
+
+---
+
+## Key Takeaway
+TanStack Start encourages **better architecture** by default, giving you the power of a full-stack framework with the developer experience of React.

@@ -1,4 +1,4 @@
-import { blogs } from "@/data/blogs";
+import { allBlogs as blogs } from "content-collections";
 import {
   Card,
   CardContent,

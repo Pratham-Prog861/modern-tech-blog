@@ -1,9 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { blogs } from "../../data/blogs";
+import { allBlogs as blogs } from "content-collections";
 import { PageLoader } from "@/components/PageLoader";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeHighlight from "rehype-highlight";
+import { MDXContent } from "@content-collections/mdx/react";
 import "highlight.js/styles/atom-one-dark.css";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -84,12 +82,7 @@ function BlogDetail() {
           prose-img:rounded-xl prose-img:shadow-lg
           prose-pre:p-0 prose-pre:bg-transparent prose-pre:border-0"
         >
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeHighlight]}
-          >
-            {blog.content}
-          </ReactMarkdown>
+          <MDXContent code={blog.mdx} />
         </div>
 
         <div className="mt-12 pt-8 border-t">

@@ -1,0 +1,63 @@
+---
+title: "Common React Mistakes That Make Your App Slow"
+summary: "Avoid common React performance pitfalls and write efficient apps."
+date: "2025-01-12"
+category: "Frontend"
+tags: ["react","performance","optimization"]
+---
+# Common React Mistakes That Kill Performance
+
+React is fast by default — unless you misuse it. Here are the top mistakes developers make.
+
+---
+
+## 1. Unnecessary Re-renders
+Passing new objects or inline functions as props causes child components to re-render every time.
+
+**❌ Bad:**
+```jsx
+<ChildComponent data={{ id: 1 }} onClick={() => console.log('click')} />
+```
+
+**✅ Good:**
+```jsx
+const data = useMemo(() => ({ id: 1 }), []);
+const handleClick = useCallback(() => console.log('click'), []);
+
+<ChildComponent data={data} onClick={handleClick} />
+```
+
+---
+
+## 2. Huge Bundle Sizes
+Importing huge libraries when you only need a small function bloats your app.
+
+**❌ Bad:**
+```javascript
+import _ from 'lodash'; // Imports everything
+```
+
+**✅ Good:**
+```javascript
+import debounce from 'lodash/debounce'; // Imports only what you need
+```
+
+---
+
+## 3. Not Using Keys Correctly
+Using `index` as a key in lists can lead to rendering bugs and performance hits.
+
+**❌ Bad:**
+```jsx
+{items.map((item, index) => <li key={index}>{item.name}</li>)}
+```
+
+**✅ Good:**
+```jsx
+{items.map((item) => <li key={item.id}>{item.name}</li>)}
+```
+
+---
+
+## Key Takeaway
+**Premature optimization** is the root of all evil. Measure performance first, then optimize where it hurts.
