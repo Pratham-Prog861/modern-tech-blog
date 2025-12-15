@@ -8,7 +8,6 @@ export default function Footer() {
     <footer className="border-t bg-muted/30 pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand Section */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 text-xl font-bold">
               <div className="p-1.5 bg-primary rounded-lg text-primary-foreground">
@@ -22,7 +21,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/Pratham-Prog861"
                 target="_blank"
                 rel="noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -30,7 +29,7 @@ export default function Footer() {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/prathamCodesDev"
                 target="_blank"
                 rel="noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -38,7 +37,7 @@ export default function Footer() {
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/pratham-darji-b704092a2/"
                 target="_blank"
                 rel="noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -85,7 +84,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
           <div className="space-y-4">
             <h4 className="font-bold text-foreground">Legal</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
@@ -107,7 +105,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
           <div className="space-y-4">
             <h4 className="font-bold text-foreground">Stay Updated</h4>
             <p className="text-sm text-muted-foreground">
