@@ -1,12 +1,15 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { Button } from '@/components/ui/button'
+import { createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
 
   return (
-    <div>
-      <h1>Hello World from Tanstack Start</h1>
+    <div className="min-h-screen flex items-center justify-center">
+      <Button asChild>
+        <Link to="/blog">Go to Blog</Link>
+      </Button>
     </div>
   )
 }
