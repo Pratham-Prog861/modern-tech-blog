@@ -27,10 +27,8 @@ function BlogDetail() {
       <h1 className="text-4xl font-bold">{blog.title}</h1>
       <p className="text-sm text-muted-foreground">{blog.date}</p>
 
-      {/* Category */}
       <Badge variant="secondary">{blog.category}</Badge>
 
-      {/* Tags */}
       <div className="flex gap-2 flex-wrap">
         {blog.tags.map((tag) => (
           <Badge key={tag} variant="outline">
@@ -39,7 +37,6 @@ function BlogDetail() {
         ))}
       </div>
 
-      {/* Markdown Content */}
       <div className="prose prose-zinc dark:prose-invert max-w-none">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {blog.content}
