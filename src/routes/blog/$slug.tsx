@@ -5,7 +5,8 @@ import { MDXContent } from "@content-collections/mdx/react";
 import "highlight.js/styles/atom-one-dark.css";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Calendar, Clock, Share2, User } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
+import { ShareButtons } from "@/components/ShareButtons";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
@@ -44,9 +45,6 @@ function BlogDetail() {
               <Badge variant="secondary" className="text-sm px-3 py-1">
                 {blog.category}
               </Badge>
-              <span className="text-muted-foreground text-sm flex items-center gap-1">
-                <Clock className="w-3 h-3" /> 5 min read
-              </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-foreground">
@@ -56,19 +54,28 @@ function BlogDetail() {
             <div className="flex items-center justify-between border-t border-border/50 pt-6 mt-8">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <User className="w-5 h-5 text-primary" />
+                  <img
+                    src="https://gravatar.com/avatar/8f5cfe4bef76bef3fe7cee2d4ccb83fc?s=400&d=robohash&r=x"
+                    alt="Logo"
+                    width={40}
+                    height={10}
+                    className="rounded-full"
+                  />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Written by Admin</p>
+                  <p className="text-sm font-medium">
+                    Written by Pratham Darji
+                  </p>
                   <p className="text-xs text-muted-foreground flex items-center gap-1">
                     <Calendar className="w-3 h-3" /> {blog.date}
                   </p>
                 </div>
               </div>
-
-              <Button variant="outline" size="icon" className="rounded-full">
-                <Share2 className="w-4 h-4" />
-              </Button>
+              <ShareButtons
+                title={blog.title}
+                description={blog.description}
+                url={typeof window !== "undefined" ? window.location.href : ""}
+              />
             </div>
           </div>
         </div>

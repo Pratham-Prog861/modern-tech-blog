@@ -5,7 +5,7 @@ import { PageLoader } from "@/components/PageLoader";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
-import { Search, Calendar, Clock, ArrowRight, X } from "lucide-react";
+import { Search, Calendar, ArrowRight, X } from "lucide-react";
 
 const blogSearchSchema = z.object({
   search: z.string().optional(),
@@ -130,9 +130,6 @@ function BlogList() {
                         <div className="flex items-center gap-4 text-xs text-muted-foreground mb-2">
                           <span className="flex items-center gap-1">
                             <Calendar className="w-3 h-3" /> {blog.date}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Clock className="w-3 h-3" /> 5 min read
                           </span>
                         </div>
                         <CardTitle className="text-2xl font-bold group-hover:text-primary transition-colors">
