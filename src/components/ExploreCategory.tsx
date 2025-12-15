@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Card, CardContent } from "./ui/card";
 
 const ExploreCategory = () => {
@@ -9,14 +10,18 @@ const ExploreCategory = () => {
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
         {categories.map((category) => (
-          <Card
+          <Link
             key={category}
-            className="hover:bg-accent transition-colors cursor-pointer"
+            to="/blog"
+            search={{ category }}
+            className="block"
           >
-            <CardContent className="flex items-center justify-center h-24 p-0">
-              <span className="font-semibold text-lg">{category}</span>
-            </CardContent>
-          </Card>
+            <Card className="hover:bg-accent transition-colors cursor-pointer h-full">
+              <CardContent className="flex items-center justify-center h-24">
+                <span className="font-semibold text-lg">{category}</span>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
     </section>
