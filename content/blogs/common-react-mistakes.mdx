@@ -5,59 +5,74 @@ date: "2025-01-12"
 category: "Frontend"
 tags: ["react","performance","optimization"]
 ---
-# Common React Mistakes That Kill Performance
+<div style={{marginTop:"20px", marginBottom:"40px"}}>
+<h1 style={{fontSize:"24px", fontWeight:"bolder"}}>Common React Mistakes That Kill Performance</h1>
 
-React is fast by default — unless you misuse it. Here are the top mistakes developers make.
+<p style={{marginTop:"10px" }}>React is fast by default — unless you misuse it. Here are the top mistakes developers make.</p>
+</div>
 
 ---
+<div style={{margin:"32px 0"}}>
+<h2 style={{fontSize:"16px", fontWeight:"bolder"}}>1. Unnecessary Re-renders</h2>
+<p style={{marginBottom:"10px", marginTop:"5px"}}>Passing new objects or inline functions as props causes child components to re-render every time.</p>
 
-## 1. Unnecessary Re-renders
-Passing new objects or inline functions as props causes child components to re-render every time.
-
-**❌ Bad:**
+<div style={{background:"#f9fafb", border:"1px solid #e5e7eb", padding:"16px", borderRadius:"8px"}}>
+<h3 style={{fontWeight:"bolder", marginBottom:"10px"}}>❌ Bad:</h3>
 ```jsx
 <ChildComponent data={{ id: 1 }} onClick={() => console.log('click')} />
 ```
+</div>
 
-**✅ Good:**
+<div style={{background:"#f9fafb", border:"1px solid #e5e7eb", padding:"16px", borderRadius:"8px"}}>
+<h3 style={{fontWeight:"bolder", marginBottom:"10px"}}>✅ Good:</h3>
 ```jsx
 const data = useMemo(() => ({ id: 1 }), []);
 const handleClick = useCallback(() => console.log('click'), []);
 
 <ChildComponent data={data} onClick={handleClick} />
 ```
-
+</div>
+</div>
 ---
-
-## 2. Huge Bundle Sizes
-Importing huge libraries when you only need a small function bloats your app.
-
-**❌ Bad:**
+<div style={{margin:"32px 0"}}>
+<h2 style={{fontSize:"16px", fontWeight:"bolder"}}>2. Huge Bundle Sizes</h2>
+<p style={{marginBottom:"10px", marginTop:"5px"}}>Importing huge libraries when you only need a small function bloats your app.</p>
+<div style={{background:"#f9fafb", border:"1px solid #e5e7eb", padding:"16px", borderRadius:"8px"}}>
+<h3 style={{fontWeight:"bolder", marginBottom:"10px"}}>❌ Bad:</h3>
 ```javascript
 import _ from 'lodash'; // Imports everything
 ```
+</div>
 
-**✅ Good:**
+<div style={{background:"#f9fafb", border:"1px solid #e5e7eb", padding:"16px", borderRadius:"8px"}}>
+<h3 style={{fontWeight:"bolder", marginBottom:"10px"}}>✅ Good:</h3>
 ```javascript
 import debounce from 'lodash/debounce'; // Imports only what you need
 ```
-
+</div>
+</div>
 ---
+<div style={{margin:"32px 0"}}>
+<h2 style={{fontSize:"16px", fontWeight:"bolder"}}>3. Not Using Keys Correctly</h2>
+<p style={{marginBottom:"10px", marginTop:"5px"}}>Using `index` as a key in lists can lead to rendering bugs and performance hits.</p>
 
-## 3. Not Using Keys Correctly
-Using `index` as a key in lists can lead to rendering bugs and performance hits.
-
-**❌ Bad:**
+<div style={{background:"#f9fafb", border:"1px solid #e5e7eb", padding:"16px", borderRadius:"8px"}}>
+<h3 style={{fontWeight:"bolder", marginBottom:"10px"}}>✅ Good:</h3>
 ```jsx
 {items.map((item, index) => <li key={index}>{item.name}</li>)}
 ```
 
-**✅ Good:**
+</div>
+
+<div style={{background:"#f9fafb", border:"1px solid #e5e7eb", padding:"16px", borderRadius:"8px"}}>
+<h3 style={{fontWeight:"bolder", marginBottom:"10px"}}>❌ Bad:</h3>
 ```jsx
 {items.map((item) => <li key={item.id}>{item.name}</li>)}
 ```
-
+</div>
+</div>
 ---
-
-## Key Takeaway
-**Premature optimization** is the root of all evil. Measure performance first, then optimize where it hurts.
+<div style={{margin:"32px 0"}}>
+<h1 style={{fontSize:"20px", fontWeight:"bolder"}}>Key Takeaway</h1>
+<p style={{marginTop:"10px"}}><strong>Premature optimization</strong> is the root of all evil. Measure performance first, then optimize where it hurts.</p>
+</div>

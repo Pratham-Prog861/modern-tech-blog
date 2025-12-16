@@ -7,6 +7,15 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { ShareButtons } from "@/components/ShareButtons";
+import { useEffect } from "react";
+import { Callout } from "@/components/mdx/Callout";
+import { Card, CardGrid } from "@/components/mdx/Card";
+
+const components = {
+  Callout,
+  Card,
+  CardGrid,
+};
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
@@ -25,16 +34,47 @@ export const Route = createFileRoute("/blog/$slug")({
 function BlogDetail() {
   const blog = Route.useLoaderData();
 
+  useEffect(() => {
+    let rafId: number | null = null;
+    const progressBar = document.getElementById("scroll-progress-bar");
+    const handleScroll = () => {
+      if (rafId) return;
+
+      rafId = requestAnimationFrame(() => {
+        const totalScroll = document.documentElement.scrollTop;
+        const windowHeight =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scroll = (totalScroll / windowHeight) * 100;
+
+        if (progressBar) {
+          progressBar.style.transform = `scaleX(${scroll / 100})`;
+        }
+
+        rafId = null;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
     <article className="min-h-screen bg-background pb-20">
+      <div className="fixed top-0 left-0 w-full h-1 z-50 bg-muted">
+        <div
+          id="scroll-progress-bar"
+          className="h-full bg-primary origin-left transition-transform duration-100 ease-out"
+          style={{ transform: "scaleX(0)" }}
+        />
+      </div>
       <div className="bg-muted/30 border-b">
         <div className="container mx-auto px-4 py-16 max-w-4xl">
-          <Button
-            asChild
-            variant="ghost"
-            size="sm"
-            className="mb-8 hover:bg-background/50 -ml-4"
-          >
+          <Button asChild variant="default" size="sm" className="mb-8 -ml-4">
             <Link to="/blog">
               <ArrowLeft className="w-4 h-4 mr-2" /> Back to Blogs
             </Link>
@@ -87,9 +127,11 @@ function BlogDetail() {
           prose-headings:font-bold prose-headings:tracking-tight 
           prose-a:text-primary prose-a:no-underline hover:prose-a:underline
           prose-img:rounded-xl prose-img:shadow-lg
-          prose-pre:p-0 prose-pre:bg-transparent prose-pre:border-0"
+          prose-pre:p-0 prose-pre:bg-transparent prose-pre:border-0
+          prose-hr:border-primary prose-hr:border-2 prose-hr:my-8
+          prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-muted/30 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic"
         >
-          <MDXContent code={blog.mdx} />
+          <MDXContent code={blog.mdx} components={components} />
         </div>
 
         <div className="mt-12 pt-8 border-t">

@@ -13,6 +13,7 @@ const blogs = defineCollection({
     date: z.string().optional(),
     tags: z.array(z.string()).optional(),
     category: z.string().optional(),
+    image: z.string().optional(),
     content: z.string(),
   }),
   transform: async (document, context) => {
@@ -27,6 +28,7 @@ const blogs = defineCollection({
       date: document.date || new Date().toISOString().split("T")[0],
       tags: document.tags || [],
       category: document.category || "General",
+      image: document.image || "",
     };
   },
 });
