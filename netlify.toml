@@ -1,0 +1,19 @@
+[build]
+  command = "pnpm build"
+  publish = ".output/public"
+
+[build.environment]
+  NITRO_PRESET = "netlify"
+
+[functions]
+  directory = ".output/server"
+
+[dev]
+  command = "pnpm dev"
+  port = 3000
+  targetPort = 3000
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200

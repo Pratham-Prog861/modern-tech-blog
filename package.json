@@ -25,7 +25,6 @@
     "clsx": "^2.1.1",
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.544.0",
-    "nitro": "latest",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-markdown": "^10.1.0",
@@ -40,6 +39,7 @@
   },
   "devDependencies": {
     "@content-collections/mdx": "^0.2.2",
+    "@netlify/vite-plugin-tanstack-start": "^1.2.4",
     "@tanstack/devtools-vite": "^0.3.11",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",

@@ -12,3 +12,5 @@ count.txt
 .vinxi
 todos.json
 .content-collections
+# Local Netlify folder
+.netlify
