@@ -1,0 +1,14 @@
+[build]
+  command = "pnpm build"
+  publish = ".output/public"
+
+[[plugins]]
+  package = "@netlify/vite-plugin-tanstack-start"
+
+[functions]
+  directory = ".output/server"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
