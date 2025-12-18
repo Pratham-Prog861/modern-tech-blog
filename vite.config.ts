@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import contentCollections from "@content-collections/vite";
 import netlify from "@netlify/vite-plugin-tanstack-start";
 
-const config = defineConfig({
+export default defineConfig({
   plugins: [
     contentCollections(),
     viteTsConfigPaths({
@@ -16,5 +16,3 @@ const config = defineConfig({
     netlify(),
   ],
 });
-
-export default config;
