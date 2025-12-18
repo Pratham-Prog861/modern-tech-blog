@@ -2,11 +2,16 @@
   command = "pnpm build"
   publish = ".output/public"
 
-[[plugins]]
-  package = "@netlify/vite-plugin-tanstack-start"
+[build.environment]
+  NITRO_PRESET = "netlify"
 
 [functions]
   directory = ".output/server"
+
+[dev]
+  command = "pnpm dev"
+  port = 3000
+  targetPort = 3000
 
 [[redirects]]
   from = "/*"
